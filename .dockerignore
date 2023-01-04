@@ -7,3 +7,4 @@ node_modules
 .dockerignore
 Makefile
 package-lock.json
+secret

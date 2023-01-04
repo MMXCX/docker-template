@@ -13,7 +13,7 @@ services:
       dockerfile: ./docker/dev.Dockerfile
     image: markmain/node:19.3.0
     ports:
-      - 5000:5000
+      - 80:80
     networks:
       - express-mongo
   mongo:
