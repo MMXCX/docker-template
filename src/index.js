@@ -4,10 +4,9 @@ const mongoose = require('mongoose')
 
 const PORT = process.env.PORT
 
-
 const app = express()
-
 mongoose.connect(process.env.MONGO_URL);
+
 const Cat = mongoose.model('Cat', { name: String })
 
 const start = async () => {
