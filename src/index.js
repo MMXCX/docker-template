@@ -14,7 +14,7 @@ const start = async () => {
     const kitty = new Cat({ name: 'MarkMain' })
 
     kitty.save().then(() => {
-      Cat.find().then(data => res.send('data'))
+      Cat.find().then(data => res.send('Hello World'))
     })
   })
 
