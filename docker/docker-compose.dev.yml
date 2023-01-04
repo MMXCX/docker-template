@@ -1,0 +1,36 @@
+#####################
+#  Services         #
+#####################
+services:
+  app:
+    restart: always
+    container_name: log
+    volumes:
+      - ${PWD}:/app
+    #Where Dockerfile exists
+    build:
+      context: ../.
+      dockerfile: ./docker/dev.Dockerfile
+    image: markmain/node:19.3.0
+    ports:
+      - 5000:5000
+    networks:
+      - express-mongo
+  mongo:
+    restart: always
+    container_name: mongodb
+    image: mongo:6.0.3
+    volumes:
+      - ../data/db:/data/db
+      - ../data/configdb:/data/configdb
+    networks:
+      - express-mongo
+#    ports:
+#      - "27017:27017"
+
+#####################
+#  Networks         #
+#####################
+networks:
+  express-mongo:
+

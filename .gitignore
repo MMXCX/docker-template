@@ -1,0 +1,7 @@
+data/*
+node_modules
+.idea
+.git
+
+.env
+package-lock.json
