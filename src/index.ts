@@ -1,28 +1,25 @@
 import express from 'express'
 import { config } from 'dotenv'
-import mongoose, { HydratedDocument } from 'mongoose'
-import { IUser, User } from './models/User'
+import mongoose from 'mongoose'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
+import router from './router'
+import errorMiddleware from './middlewares/error-middleware'
 
 config()
 
-const app: express.Express = express()
+const app = express()
 const port = process.env.PORT
+const mongo_uri = String(process.env.MONGO_URI)
 
-const mongo_uri: string = `${process.env.MONGO_URI}`
-
-app.get('/', async (req: express.Request, res: express.Response) => {
-  const data= {
-    name: 'Andrey',
-    age: 21
-  }
-
-  await new User(data).save()
-  User.find().then(data => {
-    res.json(data)
-  })
-})
-
-// app.use('/api', router)
+app.use(express.json())
+app.use(cookieParser())
+app.use(cors({
+  credentials: true,
+  origin: process.env.CLIENT_URL
+}))
+app.use('/api', router)
+app.use(errorMiddleware)
 
 
 const start = async () => {
