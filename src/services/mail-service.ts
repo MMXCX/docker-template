@@ -35,7 +35,7 @@ class MailService {
       }, (err, info) => console.log(info))
     } catch (e) {
       console.log(e)
-    }g
+    }
   }
 }
 

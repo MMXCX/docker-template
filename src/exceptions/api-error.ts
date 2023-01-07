@@ -8,7 +8,7 @@ class ApiError extends Error {
   }
 
   static unauthorizedError = () => {
-    return new ApiError(401, 'UserModel not authorized.')
+    return new ApiError(401, 'User not authorized.')
   }
 
   static badRequest = (message: string, errors: any[] = []) => {
