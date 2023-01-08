@@ -20,6 +20,7 @@ app.use(cors({
 app.use('/api', router)
 app.use(errorMiddleware)
 
+app.get('/', (req, res) => res.send('Привет антон!!'))
 
 const start = async () => {
   try {
