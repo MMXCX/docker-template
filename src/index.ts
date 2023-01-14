@@ -17,10 +17,9 @@ app.use(cors({
   credentials: true,
   origin: process.env.CLIENT_URL
 }))
+
 app.use('/api', router)
 app.use(errorMiddleware)
-
-app.get('/', (req, res) => res.send('Привет антон!!'))
 
 const start = async () => {
   try {
